@@ -41,7 +41,7 @@ function BikePage() {
         setIsTimerRunning(false);
 
         try {
-            const response = await fetch('http://localhost:5000/update-bike-log', {
+            const response = await fetch('https://bike-assemble-application.onrender.com/update-bike-log', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, bike }),
@@ -77,7 +77,7 @@ function BikePage() {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/filter-logs-dashboard', {
+            const response = await fetch('https://bike-assemble-application.onrender.com/filter-logs-dashboard', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fromDate, toDate, username }),

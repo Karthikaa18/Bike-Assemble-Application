@@ -6,9 +6,9 @@ function TimerButton({ bike, onComplete, onTimerStart, onSetTimerTime, timerTime
     const [timerActive, setTimerActive] = useState(timerTime !== null);
 
     const timeMappings = {
-        Bike1: 50 * 60, 
-        Bike2: 60 * 60, 
-        Bike3: 80 * 60,
+        Bike1: 50 * 60, // 50 minutes
+        Bike2: 60 * 60, // 60 minutes
+        Bike3: 80 * 60, // 80 minutes
     };
 
     useEffect(() => {
@@ -22,8 +22,8 @@ function TimerButton({ bike, onComplete, onTimerStart, onSetTimerTime, timerTime
         } else if (timeLeft === 0 && timerActive) {
             setTimerActive(false);
             setTimeLeft(null);
-            onSetTimerTime(null); 
-            onComplete();  
+            onSetTimerTime(null);
+            onComplete();
         }
     }, [timerActive, timeLeft, onComplete, onSetTimerTime]);
 
@@ -44,7 +44,13 @@ function TimerButton({ bike, onComplete, onTimerStart, onSetTimerTime, timerTime
     };
 
     return (
-        <Button variant="contained" color="primary" onClick={handleClick} disabled={timerActive}>
+        <Button
+            onClick={handleClick}
+            sx={{
+                backgroundColor: 'primary.main',
+                color: '#ffffff' , 
+            }}     
+        >
             {timerActive ? `${formatTime(timeLeft)} minutes left for Bike Assembly` : 'Start Assembly'}
         </Button>
     );
